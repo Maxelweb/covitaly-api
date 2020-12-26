@@ -30,3 +30,10 @@ calabria
 ```
 
 ### Zone's status
+
+```
+red
+orange
+yellow
+undefined
+```

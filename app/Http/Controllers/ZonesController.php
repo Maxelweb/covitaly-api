@@ -4,7 +4,16 @@ namespace App\Http\Controllers;
 
 class ZonesController extends Controller
 {
-    const STATUS = ['yellow', 'orange', 'red', 'undefined'];
+    var array $STATUS_DEFAULT = ['yellow', 'orange', 'red', 'undefined'];
+
+    private function getZonesWithSameStatus(String $status, array $data) {
+        $zones = [];
+        foreach ($data as $zone => $val) {
+            if($val == $status)
+                $zones[] = $zone;            
+        }
+        return $zones;
+    }
 
     private function convertStatusName(String $status) {
         switch ($status) {
@@ -77,11 +86,11 @@ class ZonesController extends Controller
             return response('Not found (data currently unavailable, retry soon)', 404);
 
             $groups = array();
-            foreach ($data as $key => $val) {
-                $groups[$val['name']][$key] = $val;
+            foreach ($this->STATUS_DEFAULT as $status) {
+                $groups[$status] = $this->getZonesWithSameStatus($status, $data);
             }
 
-            return response()->json([], 200);
+            return response()->json($groups, 200);
     }
 
 }
