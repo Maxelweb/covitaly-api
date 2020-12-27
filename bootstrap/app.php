@@ -23,7 +23,19 @@ $app = new Laravel\Lumen\Application(
     dirname(__DIR__)
 );
 
-// $app->withFacades();
+config([
+    "filesystems" => [
+        'default' => 'local',
+        'disks' => [
+            'local' => [
+                'driver' => 'local',
+                'root' => storage_path('app'),
+            ],
+        ],
+    ],
+]);
+
+$app->withFacades();
 
 // $app->withEloquent();
 

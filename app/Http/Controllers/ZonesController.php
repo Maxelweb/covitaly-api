@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Http\Controllers\DataGetterController;
+
 
 class ZonesController extends Controller
 {
@@ -29,35 +31,11 @@ class ZonesController extends Controller
         }
     }
 
-    private function provideData() 
+    public function provideData() 
     {
-        $zones = [];
-        $data = file_get_contents(env('APP_URLGOVMAP'));
-        preg_match('/<div class="col-md-6 contenitore_svg">(.*?)<\/div>/s', $data, $match);
-
-        if(empty($match))
-            return $zones;
-
-        preg_match('/<svg/s', $match[0], $matchMap);
-
-        if(empty($matchMap))
-            return $zones;
-
-        preg_match_all('/onclick="(.*?)\(\'(.*?)\'\)"/is', $match[0], $regions);   
-        
-        $zones = array_combine($regions[1], $regions[2]);
-
-        /*
-        for($i = 0; $i < count($regions[1]); $i++){
-            $zones[$i]['name'] = $regions[1][$i];
-            $zones[$i]['status'] = $this->convertStatusName($regions[2][$i]);
-        }*/
-
-        foreach($zones as $zone => &$val) {
-            $val = $this->convertStatusName($val);
-        }
-
-        return $zones;
+        $x = new DataGetterController();
+        var_dump($x->saveDataToStorage());
+        return DataGetterController::getDataFromStorage();
     }
 
     public function showAllCurrentZones()
