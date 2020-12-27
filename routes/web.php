@@ -17,7 +17,7 @@ $router->get('/', function () use ($router) {
     return '<h1>CovItaly Public REST APIs</h1> <br>'.$router->app->version();
 });
 
-$router->group(['prefix' => 'public'], function () use ($router) {
+$router->group(['prefix' => 'v1'], function () use ($router) {
 
     $router->get('zones',  ['uses' => 'ZonesController@showAllCurrentZones']);
     $router->get('zones/{region}', ['uses' => 'ZonesController@showASingleZone']);

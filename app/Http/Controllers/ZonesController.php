@@ -17,24 +17,8 @@ class ZonesController extends Controller
         return $zones;
     }
 
-    private function convertStatusName(String $status) {
-        switch ($status) {
-            case 'rosso':
-                return 'red';
-            case 'giallo':
-                return 'yellow';
-            case 'arancione':
-                return 'orange';
-            default:
-                return 'undefined';
-                break;
-        }
-    }
-
     private function provideData(bool $array_assoc=false) 
     {
-        //$x = new DataGetterController();
-        //$x->saveDataToStorage();
         return DataGetterController::getDataFromStorage($array_assoc);
     }
 
