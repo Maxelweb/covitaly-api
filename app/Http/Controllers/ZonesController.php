@@ -31,44 +31,48 @@ class ZonesController extends Controller
         }
     }
 
-    public function provideData() 
+    private function provideData(bool $array_assoc=false) 
     {
-        $x = new DataGetterController();
-        var_dump($x->saveDataToStorage());
-        return DataGetterController::getDataFromStorage();
+        //$x = new DataGetterController();
+        //$x->saveDataToStorage();
+        return DataGetterController::getDataFromStorage($array_assoc);
     }
 
     public function showAllCurrentZones()
     {
-        $data = $this->provideData();
-        return empty($data) ? response('Not found (data currently unavailable, retry soon)', 404) : response()->json($data, 200);
+        $data = $this->provideData(true);
+        return empty($data) ? response('Not found (data currently unavailable)', 404) : response()->json($data, 200);
     }
 
     public function showASingleZone(String $region)
     {
         $data = $this->provideData();
         if(empty($data))
-            return response('Not found (data currently unavailable, retry soon)', 404);
+            return response('Not found (data currently unavailable)', 404);
         
-        if(isset($data[$region])) 
-            return response()->json(array(strtolower($region) => $data[$region]), 200);
-        else
-            return response('Not found (no region found with that name)', 404);
-
+        if(isset($data->zones_status->$region)) {
+            $data->zone_status = (object) array(strtolower($region) => $data->zones_status->$region);
+            unset($data->zones_status);
+            return response()->json((array) $data, 200);
+        }
+        
+        return response('Not found (no region found with that name)', 404);
+        
     }
 
     public function showZonesGroupedByStatus() 
     {
-        $data = $this->provideData();
+        $data = $this->provideData(true);
         if(empty($data))
-            return response('Not found (data currently unavailable, retry soon)', 404);
+            return response('Not found (data currently unavailable)', 404);
 
-            $groups = array();
-            foreach ($this->STATUS_DEFAULT as $status) {
-                $groups[$status] = $this->getZonesWithSameStatus($status, $data);
-            }
-
-            return response()->json($groups, 200);
+        $groups = array();
+        foreach ($this->STATUS_DEFAULT as $status) {
+            $groups[$status] = $this->getZonesWithSameStatus($status, $data['zones_status']);
+        }
+        unset($data['zones_status']);
+        $data['status_zones'] = $groups;
+        return response()->json($data, 200);
     }
 
 }

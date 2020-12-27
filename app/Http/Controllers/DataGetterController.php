@@ -53,17 +53,17 @@ class DataGetterController extends Controller
     public function saveDataToStorage() {
         
         $res = $this->getExternalData();
-        var_dump($res);
+
         if(!empty($res)){
-            Storage::disk('local')->put('latest_zones_update.json', $res);
+            Storage::disk('local')->put('latest_zones_update.json', json_encode($res));
             return true;
         } 
 
         return false;
     }
 
-    static public function getDataFromStorage() {
-        if(Storage::disk('local')->exist('latest_zones_update.json'))
-            return Storage::disk('local')->get('latest_zones_update.json');
+    static public function getDataFromStorage(bool $json_type_assoc) {
+        if(Storage::disk('local')->exists('latest_zones_update.json'))
+            return json_decode(Storage::disk('local')->get('latest_zones_update.json'), $json_type_assoc);
     }
 }
