@@ -5,7 +5,6 @@ namespace App\Console;
 
 use Illuminate\Console\Scheduling\Schedule;
 use Laravel\Lumen\Console\Kernel as ConsoleKernel;
-use App\Http\Controllers\DataGetterController as DataGetter;
 
 class Kernel extends ConsoleKernel
 {
@@ -26,8 +25,6 @@ class Kernel extends ConsoleKernel
      */
     protected function schedule(Schedule $schedule)
     {
-        $schedule->call(function () {
-            DataGetter::saveDataToStorage();
-        })->everyFifteenMinutes();;
+        $schedule->call('App\Http\Controllers\DataGetterController@saveDataToStorage')->everyMinute();
     }
 }

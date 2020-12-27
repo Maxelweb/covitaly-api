@@ -8,7 +8,7 @@ class DataGetterController extends Controller
 {
     static $STATUS_DEFAULT = ['yellow', 'orange', 'red', 'undefined'];
 
-    public function convertStatusName(String $status) {
+    static public function convertStatusName(String $status) {
         switch ($status) {
             case 'rosso':
                 return 'red';
@@ -22,7 +22,7 @@ class DataGetterController extends Controller
         }
     }
 
-    private function getExternalData() 
+    static public function getExternalData() 
     {
         $zones = [];
         $data = file_get_contents(env('APP_URLGOVMAP'));
@@ -41,7 +41,7 @@ class DataGetterController extends Controller
         $zones = array_combine($regions[1], $regions[2]);
 
         foreach($zones as $zone => &$val) {
-            $val = $this->convertStatusName($val);
+            $val = DataGetterController::convertStatusName($val);
         }
 
         $formatted['last_update'] = Carbon::now("Europe/Rome")->toDateTimeString();
@@ -52,7 +52,7 @@ class DataGetterController extends Controller
 
     static public function saveDataToStorage() {
         
-        $res = $this->getExternalData();
+        $res = DataGetterController::getExternalData();
 
         if(!empty($res)){
             Storage::disk('local')->put('latest_zones_update.json', json_encode($res));
