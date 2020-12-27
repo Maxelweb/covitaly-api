@@ -1,6 +1,7 @@
 <?php
 
 /** @var \Laravel\Lumen\Routing\Router $router */
+use Illuminate\Support\Facades\File;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +15,12 @@
 */
 
 $router->get('/', function () use ($router) {
-    return '<h1>CovItaly Public REST APIs</h1> <br>'.$router->app->version();
+    // return File::get(public_path() . '/docs/index.html');
+    return '<h1>CovItaly Public REST APIs</h1> <a href="docs/index.html">Go to Documentation</a> - <a href="https://covitaly.it">Back to Covitaly.it</a>'; 
+    // .$router->app->version();
 });
 
-$router->group(['prefix' => 'v1'], function () use ($router) {
+$router->get('zones',  ['uses' => 'ZonesController@showAllCurrentZones']);
+$router->get('zones/{region}', ['uses' => 'ZonesController@showASingleZone']);
+$router->get('status', ['uses' => 'ZonesController@showZonesGroupedByStatus']);
 
-    $router->get('zones',  ['uses' => 'ZonesController@showAllCurrentZones']);
-    $router->get('zones/{region}', ['uses' => 'ZonesController@showASingleZone']);
-    $router->get('status', ['uses' => 'ZonesController@showZonesGroupedByStatus']);
-});

@@ -72,6 +72,7 @@ $app->singleton(
 */
 
 $app->configure('app');
+$app->configure('scribe');
 
 /*
 |--------------------------------------------------------------------------
@@ -103,6 +104,7 @@ $app->configure('app');
 |
 */
 
+$app->register(\Knuckles\Scribe\ScribeServiceProvider::class);
 // $app->register(App\Providers\AppServiceProvider::class);
 // $app->register(App\Providers\AuthServiceProvider::class);
 // $app->register(App\Providers\EventServiceProvider::class);
@@ -118,10 +120,15 @@ $app->configure('app');
 |
 */
 
+
+
 $app->router->group([
     'namespace' => 'App\Http\Controllers',
 ], function ($router) {
     require __DIR__.'/../routes/web.php';
 });
+
+
+
 
 return $app;

@@ -1,0 +1,118 @@
+openapi: 3.0.3
+info:
+    title: 'CovItaly REST APIs (beta)'
+    description: 'These APIs are made to retrieve information regarding the COVID ordinances made by the Italian government.'
+    version: 1.0.0
+servers:
+    -
+        url: 'http://localhost'
+paths:
+    /zones:
+        get:
+            summary: zones/
+            description: "This endpoint allows you to see the color status of all available zones/regions in Italy.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>"
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    last_update: '2020-12-27 17:55:43'
+                                    zones_status: { piemonte: yellow, veneto: yellow, lombardia: yellow, emiliaromagna: yellow, umbria: yellow, lazio: yellow, toscana: orange, abruzzo: orange, molise: yellow, basilicata: yellow, puglia: yellow, marche: yellow, sicilia: yellow, sardegna: yellow, liguria: yellow, trento: yellow, bolzano: orange, friuliveneziagiulia: yellow, valledaosta: orange, campania: orange, calabria: yellow }
+                                properties:
+                                    last_update: { type: string, example: '2020-12-27 17:55:43' }
+                                    zones_status: { type: object, example: { piemonte: yellow, veneto: yellow, lombardia: yellow, emiliaromagna: yellow, umbria: yellow, lazio: yellow, toscana: orange, abruzzo: orange, molise: yellow, basilicata: yellow, puglia: yellow, marche: yellow, sicilia: yellow, sardegna: yellow, liguria: yellow, trento: yellow, bolzano: orange, friuliveneziagiulia: yellow, valledaosta: orange, campania: orange, calabria: yellow } }
+            tags:
+                - 'APIs endpoints'
+            security: []
+    '/zones/{region}':
+        get:
+            summary: 'zones/{region}'
+            description: "This endpoint allows you to see to get a single region status by name.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>"
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                404:
+                    description: ''
+                    content:
+                        text/plain:
+                            schema:
+                                type: string
+                                example: 'Not found (no region found with that name)'
+            tags:
+                - 'APIs endpoints'
+            security: []
+        parameters:
+            -
+                in: path
+                name: region
+                description: ''
+                example: minus
+                required: true
+                schema:
+                    type: string
+    /status:
+        get:
+            summary: status/
+            description: "This endpoint allows you to group the regions in Italy by the current status.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>"
+            parameters:
+                -
+                    in: header
+                    name: Content-Type
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+                -
+                    in: header
+                    name: Accept
+                    description: ''
+                    example: application/json
+                    schema:
+                        type: string
+            responses:
+                200:
+                    description: ''
+                    content:
+                        application/json:
+                            schema:
+                                type: object
+                                example:
+                                    last_update: '2020-12-27 17:55:43'
+                                    status_zones: { yellow: [piemonte, veneto, lombardia, emiliaromagna, umbria, lazio, molise, basilicata, puglia, marche, sicilia, sardegna, liguria, trento, friuliveneziagiulia, calabria], orange: [toscana, abruzzo, bolzano, valledaosta, campania], red: [], undefined: [] }
+                                properties:
+                                    last_update: { type: string, example: '2020-12-27 17:55:43' }
+                                    status_zones: { type: object, example: { yellow: [piemonte, veneto, lombardia, emiliaromagna, umbria, lazio, molise, basilicata, puglia, marche, sicilia, sardegna, liguria, trento, friuliveneziagiulia, calabria], orange: [toscana, abruzzo, bolzano, valledaosta, campania], red: [], undefined: [] } }
+            tags:
+                - 'APIs endpoints'
+            security: []

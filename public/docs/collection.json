@@ -1,0 +1,123 @@
+{
+    "variable": [
+        {
+            "id": "baseUrl",
+            "key": "baseUrl",
+            "type": "string",
+            "name": "string",
+            "value": "localhost"
+        }
+    ],
+    "info": {
+        "name": "CovItaly REST APIs (beta)",
+        "_postman_id": "a6cfe7d8-c58c-45ca-b263-0cd9e16e8e50",
+        "description": "These APIs are made to retrieve information regarding the COVID ordinances made by the Italian government.",
+        "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
+    },
+    "item": [
+        {
+            "name": "APIs endpoints",
+            "description": "",
+            "item": [
+                {
+                    "name": "zones\/",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "zones",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/zones"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to see the color status of all available zones\/regions in Italy.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined<\/code><\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "zones\/{region}",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "zones\/:region",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/zones\/:region",
+                            "variable": [
+                                {
+                                    "id": "region",
+                                    "key": "region",
+                                    "value": "minus",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to see to get a single region status by name.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined<\/code><\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                },
+                {
+                    "name": "status\/",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "{{baseUrl}}",
+                            "path": "status",
+                            "query": [],
+                            "raw": "http:\/\/{{baseUrl}}\/status"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "This endpoint allows you to group the regions in Italy by the current status.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined<\/code><\/aside>",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": []
+                }
+            ]
+        }
+    ],
+    "auth": {
+        "type": "noauth"
+    }
+}

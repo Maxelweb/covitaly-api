@@ -22,12 +22,24 @@ class ZonesController extends Controller
         return DataGetterController::getDataFromStorage($array_assoc);
     }
 
+    /**
+     * zones/
+     *
+     * This endpoint allows you to see the color status of all available zones/regions in Italy.
+     * <aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+     */
     public function showAllCurrentZones()
     {
         $data = $this->provideData(true);
         return empty($data) ? response('Not found (data currently unavailable)', 404) : response()->json($data, 200);
     }
 
+    /**
+     * zones/{region}
+     *
+     * This endpoint allows you to see to get a single region status by name.
+     * <aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+     */
     public function showASingleZone(String $region)
     {
         $data = $this->provideData();
@@ -44,6 +56,12 @@ class ZonesController extends Controller
         
     }
 
+    /**
+     * status/
+     *
+     * This endpoint allows you to group the regions in Italy by the current status.
+     * <aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+     */
     public function showZonesGroupedByStatus() 
     {
         $data = $this->provideData(true);

@@ -25,7 +25,7 @@ class DataGetterController extends Controller
     private function getExternalData() 
     {
         $zones = [];
-        $data = file_get_contents("https://web.archive.org/web/20201215173120/http://www.governo.it/it/articolo/domande-frequenti-sulle-misure-adottate-dal-governo/15638/"/*env('APP_URLGOVMAP')*/);
+        $data = file_get_contents(env('APP_URLGOVMAP'));
         preg_match('/<div class="col-md-6 contenitore_svg">(.*?)<\/div>/s', $data, $match);
 
         if(empty($match))
@@ -50,7 +50,7 @@ class DataGetterController extends Controller
         return $formatted;
     }
 
-    public function saveDataToStorage() {
+    static public function saveDataToStorage() {
         
         $res = $this->getExternalData();
 
