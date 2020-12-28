@@ -1,7 +1,14 @@
-# CovItaly REST API
+![](https://covitaly.it/res/images/banner.png)
 
-CovItaly.it Public REST API used to get some re-elaborated data 
+# CovItaly REST API (beta)
 
+CovItaly.it Public REST API used to get some re-elaborated covid data 
+
+
+## Documentation
+
+- [Online APIs documentation](https://api.covitaly.it/docs/index.html) (https://api.covitaly.it/docs/)
+- [OpenAPI v3](https://api.covitaly.it/docs/openapi.yaml) (https://api.covitaly.it/docs/openapi.yaml)
 
 ### Zone's names
 
