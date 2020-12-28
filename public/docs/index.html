@@ -46,7 +46,7 @@
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: December 27 2020</li>
+            <li>Last updated: December 28 2020</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -60,7 +60,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <blockquote>
 <p>Base URL</p>
 </blockquote>
-<pre><code class="language-yaml">http://localhost</code></pre><h1>Authenticating requests</h1>
+<pre><code class="language-yaml">https://api.covitaly.it</code></pre><h1>Authenticating requests</h1>
 <p>This API is not authenticated.</p><h1>APIs endpoints</h1>
 <h2>zones/</h2>
 <p>This endpoint allows you to see the color status of all available zones/regions in Italy.</p>
@@ -69,11 +69,11 @@ You can switch the language used with the tabs at the top right (or from the nav
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/zones" \
+    -G "https://api.covitaly.it/zones" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/zones"
+    "https://api.covitaly.it/zones"
 );
 
 let headers = {
@@ -88,7 +88,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/zones',
+    'https://api.covitaly.it/zones',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -101,7 +101,7 @@ print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/zones'
+url = 'https://api.covitaly.it/zones'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -113,7 +113,7 @@ response.json()</code></pre>
 <p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "last_update": "2020-12-27 17:55:43",
+    "last_update": "2020-12-27 20:39:10",
     "zones_status": {
         "piemonte": "yellow",
         "veneto": "yellow",
@@ -121,7 +121,7 @@ response.json()</code></pre>
         "emiliaromagna": "yellow",
         "umbria": "yellow",
         "lazio": "yellow",
-        "toscana": "orange",
+        "toscana": "yellow",
         "abruzzo": "orange",
         "molise": "yellow",
         "basilicata": "yellow",
@@ -131,10 +131,10 @@ response.json()</code></pre>
         "sardegna": "yellow",
         "liguria": "yellow",
         "trento": "yellow",
-        "bolzano": "orange",
+        "bolzano": "yellow",
         "friuliveneziagiulia": "yellow",
-        "valledaosta": "orange",
-        "campania": "orange",
+        "valledaosta": "yellow",
+        "campania": "yellow",
         "calabria": "yellow"
     }
 }</code></pre>
@@ -162,11 +162,11 @@ response.json()</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/zones/minus" \
+    -G "https://api.covitaly.it/zones/quia" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/zones/minus"
+    "https://api.covitaly.it/zones/quia"
 );
 
 let headers = {
@@ -181,7 +181,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/zones/minus',
+    'https://api.covitaly.it/zones/quia',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -194,7 +194,7 @@ print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/zones/minus'
+url = 'https://api.covitaly.it/zones/quia'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -237,11 +237,11 @@ Not found (no region found with that name)</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "http://localhost/status" \
+    -G "https://api.covitaly.it/status" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/status"
+    "https://api.covitaly.it/status"
 );
 
 let headers = {
@@ -256,7 +256,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/status',
+    'https://api.covitaly.it/status',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -269,7 +269,7 @@ print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-python">import requests
 import json
 
-url = 'http://localhost/status'
+url = 'https://api.covitaly.it/status'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -281,7 +281,7 @@ response.json()</code></pre>
 <p>Example response (200):</p>
 </blockquote>
 <pre><code class="language-json">{
-    "last_update": "2020-12-27 17:55:43",
+    "last_update": "2020-12-27 20:39:10",
     "status_zones": {
         "yellow": [
             "piemonte",
@@ -290,6 +290,7 @@ response.json()</code></pre>
             "emiliaromagna",
             "umbria",
             "lazio",
+            "toscana",
             "molise",
             "basilicata",
             "puglia",
@@ -298,15 +299,14 @@ response.json()</code></pre>
             "sardegna",
             "liguria",
             "trento",
+            "bolzano",
             "friuliveneziagiulia",
+            "valledaosta",
+            "campania",
             "calabria"
         ],
         "orange": [
-            "toscana",
-            "abruzzo",
-            "bolzano",
-            "valledaosta",
-            "campania"
+            "abruzzo"
         ],
         "red": [],
         "undefined": []

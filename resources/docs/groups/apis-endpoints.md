@@ -11,14 +11,14 @@ This endpoint allows you to see the color status of all available zones/regions 
 
 ```bash
 curl -X GET \
-    -G "http://localhost/zones" \
+    -G "https://api.covitaly.it/zones" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/zones"
+    "https://api.covitaly.it/zones"
 );
 
 let headers = {
@@ -37,7 +37,7 @@ fetch(url, {
 
 $client = new \GuzzleHttp\Client();
 $response = $client->get(
-    'http://localhost/zones',
+    'https://api.covitaly.it/zones',
     [
         'headers' => [
             'Content-Type' => 'application/json',
@@ -53,7 +53,7 @@ print_r(json_decode((string) $body));
 import requests
 import json
 
-url = 'http://localhost/zones'
+url = 'https://api.covitaly.it/zones'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -68,7 +68,7 @@ response.json()
 
 ```json
 {
-    "last_update": "2020-12-27 17:55:43",
+    "last_update": "2020-12-27 20:39:10",
     "zones_status": {
         "piemonte": "yellow",
         "veneto": "yellow",
@@ -76,7 +76,7 @@ response.json()
         "emiliaromagna": "yellow",
         "umbria": "yellow",
         "lazio": "yellow",
-        "toscana": "orange",
+        "toscana": "yellow",
         "abruzzo": "orange",
         "molise": "yellow",
         "basilicata": "yellow",
@@ -86,10 +86,10 @@ response.json()
         "sardegna": "yellow",
         "liguria": "yellow",
         "trento": "yellow",
-        "bolzano": "orange",
+        "bolzano": "yellow",
         "friuliveneziagiulia": "yellow",
-        "valledaosta": "orange",
-        "campania": "orange",
+        "valledaosta": "yellow",
+        "campania": "yellow",
         "calabria": "yellow"
     }
 }
@@ -123,14 +123,14 @@ This endpoint allows you to see to get a single region status by name.
 
 ```bash
 curl -X GET \
-    -G "http://localhost/zones/minus" \
+    -G "https://api.covitaly.it/zones/quia" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/zones/minus"
+    "https://api.covitaly.it/zones/quia"
 );
 
 let headers = {
@@ -149,7 +149,7 @@ fetch(url, {
 
 $client = new \GuzzleHttp\Client();
 $response = $client->get(
-    'http://localhost/zones/minus',
+    'https://api.covitaly.it/zones/quia',
     [
         'headers' => [
             'Content-Type' => 'application/json',
@@ -165,7 +165,7 @@ print_r(json_decode((string) $body));
 import requests
 import json
 
-url = 'http://localhost/zones/minus'
+url = 'https://api.covitaly.it/zones/quia'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -217,14 +217,14 @@ This endpoint allows you to group the regions in Italy by the current status.
 
 ```bash
 curl -X GET \
-    -G "http://localhost/status" \
+    -G "https://api.covitaly.it/status" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/status"
+    "https://api.covitaly.it/status"
 );
 
 let headers = {
@@ -243,7 +243,7 @@ fetch(url, {
 
 $client = new \GuzzleHttp\Client();
 $response = $client->get(
-    'http://localhost/status',
+    'https://api.covitaly.it/status',
     [
         'headers' => [
             'Content-Type' => 'application/json',
@@ -259,7 +259,7 @@ print_r(json_decode((string) $body));
 import requests
 import json
 
-url = 'http://localhost/status'
+url = 'https://api.covitaly.it/status'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -274,7 +274,7 @@ response.json()
 
 ```json
 {
-    "last_update": "2020-12-27 17:55:43",
+    "last_update": "2020-12-27 20:39:10",
     "status_zones": {
         "yellow": [
             "piemonte",
@@ -283,6 +283,7 @@ response.json()
             "emiliaromagna",
             "umbria",
             "lazio",
+            "toscana",
             "molise",
             "basilicata",
             "puglia",
@@ -291,15 +292,14 @@ response.json()
             "sardegna",
             "liguria",
             "trento",
+            "bolzano",
             "friuliveneziagiulia",
+            "valledaosta",
+            "campania",
             "calabria"
         ],
         "orange": [
-            "toscana",
-            "abruzzo",
-            "bolzano",
-            "valledaosta",
-            "campania"
+            "abruzzo"
         ],
         "red": [],
         "undefined": []

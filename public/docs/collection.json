@@ -5,12 +5,12 @@
             "key": "baseUrl",
             "type": "string",
             "name": "string",
-            "value": "localhost"
+            "value": "api.covitaly.it"
         }
     ],
     "info": {
         "name": "CovItaly REST APIs (beta)",
-        "_postman_id": "a6cfe7d8-c58c-45ca-b263-0cd9e16e8e50",
+        "_postman_id": "a1487848-777d-422e-a344-de272da28afe",
         "description": "These APIs are made to retrieve information regarding the COVID ordinances made by the Italian government.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -23,11 +23,11 @@
                     "name": "zones\/",
                     "request": {
                         "url": {
-                            "protocol": "http",
+                            "protocol": "https",
                             "host": "{{baseUrl}}",
                             "path": "zones",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/zones"
+                            "raw": "https:\/\/{{baseUrl}}\/zones"
                         },
                         "method": "GET",
                         "header": [
@@ -52,16 +52,16 @@
                     "name": "zones\/{region}",
                     "request": {
                         "url": {
-                            "protocol": "http",
+                            "protocol": "https",
                             "host": "{{baseUrl}}",
                             "path": "zones\/:region",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/zones\/:region",
+                            "raw": "https:\/\/{{baseUrl}}\/zones\/:region",
                             "variable": [
                                 {
                                     "id": "region",
                                     "key": "region",
-                                    "value": "minus",
+                                    "value": "quia",
                                     "description": ""
                                 }
                             ]
@@ -89,11 +89,11 @@
                     "name": "status\/",
                     "request": {
                         "url": {
-                            "protocol": "http",
+                            "protocol": "https",
                             "host": "{{baseUrl}}",
                             "path": "status",
                             "query": [],
-                            "raw": "http:\/\/{{baseUrl}}\/status"
+                            "raw": "https:\/\/{{baseUrl}}\/status"
                         },
                         "method": "GET",
                         "header": [
