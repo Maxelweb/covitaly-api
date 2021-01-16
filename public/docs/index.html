@@ -46,7 +46,7 @@
                             <li><a href='http://github.com/knuckleswtf/scribe'>Documentation powered by Scribe ✍</a></li>
                     </ul>
             <ul class="toc-footer" id="last-updated">
-            <li>Last updated: December 28 2020</li>
+            <li>Last updated: January 16 2021</li>
         </ul>
 </div>
 <div class="page-wrapper">
@@ -64,7 +64,7 @@ You can switch the language used with the tabs at the top right (or from the nav
 <p>This API is not authenticated.</p><h1>APIs endpoints</h1>
 <h2>zones/</h2>
 <p>This endpoint allows you to see the color status of all available zones/regions in Italy.</p>
-<aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+<aside class="info">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -162,11 +162,11 @@ response.json()</code></pre>
 <p>Example request:</p>
 </blockquote>
 <pre><code class="language-bash">curl -X GET \
-    -G "https://api.covitaly.it/zones/quia" \
+    -G "https://api.covitaly.it/zones/magnam" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"</code></pre>
 <pre><code class="language-javascript">const url = new URL(
-    "https://api.covitaly.it/zones/quia"
+    "https://api.covitaly.it/zones/magnam"
 );
 
 let headers = {
@@ -181,7 +181,7 @@ fetch(url, {
 <pre><code class="language-php">
 $client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'https://api.covitaly.it/zones/quia',
+    'https://api.covitaly.it/zones/magnam',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
@@ -194,7 +194,7 @@ print_r(json_decode((string) $body));</code></pre>
 <pre><code class="language-python">import requests
 import json
 
-url = 'https://api.covitaly.it/zones/quia'
+url = 'https://api.covitaly.it/zones/magnam'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -232,7 +232,7 @@ Not found (no region found with that name)</code></pre>
 </form>
 <h2>status/</h2>
 <p>This endpoint allows you to group the regions in Italy by the current status.</p>
-<aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+<aside class="info">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>
 <blockquote>
 <p>Example request:</p>
 </blockquote>
@@ -309,6 +309,7 @@ response.json()</code></pre>
             "abruzzo"
         ],
         "red": [],
+        "white": [],
         "undefined": []
     }
 }</code></pre>

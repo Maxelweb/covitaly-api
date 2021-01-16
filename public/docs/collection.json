@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "CovItaly REST APIs (beta)",
-        "_postman_id": "a1487848-777d-422e-a344-de272da28afe",
+        "_postman_id": "cac87128-5009-45ff-956f-5a51ec8047e7",
         "description": "These APIs are made to retrieve information regarding the COVID ordinances made by the Italian government.",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -41,7 +41,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "This endpoint allows you to see the color status of all available zones\/regions in Italy.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined<\/code><\/aside>",
+                        "description": "This endpoint allows you to see the color status of all available zones\/regions in Italy.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, white, undefined<\/code><\/aside>",
                         "auth": {
                             "type": "noauth"
                         }
@@ -61,7 +61,7 @@
                                 {
                                     "id": "region",
                                     "key": "region",
-                                    "value": "quia",
+                                    "value": "magnam",
                                     "description": ""
                                 }
                             ]
@@ -107,7 +107,7 @@
                             }
                         ],
                         "body": null,
-                        "description": "This endpoint allows you to group the regions in Italy by the current status.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined<\/code><\/aside>",
+                        "description": "This endpoint allows you to group the regions in Italy by the current status.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, white, undefined<\/code><\/aside>",
                         "auth": {
                             "type": "noauth"
                         }

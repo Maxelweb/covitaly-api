@@ -5,7 +5,7 @@
 
 
 This endpoint allows you to see the color status of all available zones/regions in Italy.
-<aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+<aside class="info">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>
 
 > Example request:
 
@@ -123,14 +123,14 @@ This endpoint allows you to see to get a single region status by name.
 
 ```bash
 curl -X GET \
-    -G "https://api.covitaly.it/zones/quia" \
+    -G "https://api.covitaly.it/zones/magnam" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "https://api.covitaly.it/zones/quia"
+    "https://api.covitaly.it/zones/magnam"
 );
 
 let headers = {
@@ -149,7 +149,7 @@ fetch(url, {
 
 $client = new \GuzzleHttp\Client();
 $response = $client->get(
-    'https://api.covitaly.it/zones/quia',
+    'https://api.covitaly.it/zones/magnam',
     [
         'headers' => [
             'Content-Type' => 'application/json',
@@ -165,7 +165,7 @@ print_r(json_decode((string) $body));
 import requests
 import json
 
-url = 'https://api.covitaly.it/zones/quia'
+url = 'https://api.covitaly.it/zones/magnam'
 headers = {
   'Content-Type': 'application/json',
   'Accept': 'application/json'
@@ -211,7 +211,7 @@ Not found (no region found with that name)
 
 
 This endpoint allows you to group the regions in Italy by the current status.
-<aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+<aside class="info">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>
 
 > Example request:
 
@@ -302,6 +302,7 @@ response.json()
             "abruzzo"
         ],
         "red": [],
+        "white": [],
         "undefined": []
     }
 }

@@ -10,7 +10,7 @@ paths:
     /zones:
         get:
             summary: zones/
-            description: "This endpoint allows you to see the color status of all available zones/regions in Italy.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>"
+            description: "This endpoint allows you to see the color status of all available zones/regions in Italy.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>"
             parameters:
                 -
                     in: header
@@ -77,14 +77,14 @@ paths:
                 in: path
                 name: region
                 description: ''
-                example: quia
+                example: magnam
                 required: true
                 schema:
                     type: string
     /status:
         get:
             summary: status/
-            description: "This endpoint allows you to group the regions in Italy by the current status.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>"
+            description: "This endpoint allows you to group the regions in Italy by the current status.\n<aside class=\"info\">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>"
             parameters:
                 -
                     in: header
@@ -109,10 +109,10 @@ paths:
                                 type: object
                                 example:
                                     last_update: '2020-12-27 20:39:10'
-                                    status_zones: { yellow: [piemonte, veneto, lombardia, emiliaromagna, umbria, lazio, toscana, molise, basilicata, puglia, marche, sicilia, sardegna, liguria, trento, bolzano, friuliveneziagiulia, valledaosta, campania, calabria], orange: [abruzzo], red: [], undefined: [] }
+                                    status_zones: { yellow: [piemonte, veneto, lombardia, emiliaromagna, umbria, lazio, toscana, molise, basilicata, puglia, marche, sicilia, sardegna, liguria, trento, bolzano, friuliveneziagiulia, valledaosta, campania, calabria], orange: [abruzzo], red: [], white: [], undefined: [] }
                                 properties:
                                     last_update: { type: string, example: '2020-12-27 20:39:10' }
-                                    status_zones: { type: object, example: { yellow: [piemonte, veneto, lombardia, emiliaromagna, umbria, lazio, toscana, molise, basilicata, puglia, marche, sicilia, sardegna, liguria, trento, bolzano, friuliveneziagiulia, valledaosta, campania, calabria], orange: [abruzzo], red: [], undefined: [] } }
+                                    status_zones: { type: object, example: { yellow: [piemonte, veneto, lombardia, emiliaromagna, umbria, lazio, toscana, molise, basilicata, puglia, marche, sicilia, sardegna, liguria, trento, bolzano, friuliveneziagiulia, valledaosta, campania, calabria], orange: [abruzzo], red: [], white: [], undefined: [] } }
             tags:
                 - 'APIs endpoints'
             security: []

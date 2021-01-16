@@ -16,6 +16,9 @@ class DataGetterController extends Controller
                 return 'yellow';
             case 'arancione':
                 return 'orange';
+            case 'bianca':
+            case 'bianco':
+                return 'white';
             default:
                 return 'undefined';
                 break;

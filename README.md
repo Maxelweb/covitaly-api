@@ -42,5 +42,6 @@ calabria
 red
 orange
 yellow
+white
 undefined
 ```

@@ -6,7 +6,7 @@ use App\Http\Controllers\DataGetterController;
 
 class ZonesController extends Controller
 {
-    var array $STATUS_DEFAULT = ['yellow', 'orange', 'red', 'undefined'];
+    var array $STATUS_DEFAULT = ['yellow', 'orange', 'red', 'white', 'undefined'];
 
     private function getZonesWithSameStatus(String $status, array $data) {
         $zones = [];
@@ -26,7 +26,7 @@ class ZonesController extends Controller
      * zones/
      *
      * This endpoint allows you to see the color status of all available zones/regions in Italy.
-     * <aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+     * <aside class="info">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>
      */
     public function showAllCurrentZones()
     {
@@ -60,7 +60,7 @@ class ZonesController extends Controller
      * status/
      *
      * This endpoint allows you to group the regions in Italy by the current status.
-     * <aside class="info">Status could be one of the following: <code>red, orange, yellow, undefined</code></aside>
+     * <aside class="info">Status could be one of the following: <code>red, orange, yellow, white, undefined</code></aside>
      */
     public function showZonesGroupedByStatus() 
     {
